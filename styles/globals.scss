@@ -1,5 +1,22 @@
+@import "variables.scss";
+@import "../public/fonts/fonts.scss";
 * {
-  font-family: "Biennale Regular";
+  font-family: $fontRegular;
+  
 }
-
-@import "../public/fonts/fonts.scss"
+body {
+  text-align: center;
+}
+.oculto {
+  display: none;
+}
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.userImage {
+  width: 100px;
+}
+.button {
+  background-color: black;
+}
