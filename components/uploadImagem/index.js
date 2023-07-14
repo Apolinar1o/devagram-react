@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 
-export function UploadImage({
+export default function UploadImage({
     className = "",
     setImagem,
     imagemPreview,
@@ -13,7 +13,7 @@ export function UploadImage({
 
     useEffect(() => {
         if(!aoSetarArefencia) {
-            isReturnStatement
+            return
         }
 
         aoSetarArefencia(refenciaInput?.current)
@@ -42,7 +42,7 @@ export function UploadImage({
     }
 
     return (
-        <div className= {` uploadImagemCosmic ${className} `}  onClick={abrirSelecaoArquivos}> 
+        <div className= {` uploadImagemConteiner ${className} `}  onClick={abrirSelecaoArquivos}> 
         {imagemPreview && (
             <div className="imagemPreviewContainer">
                 <img
