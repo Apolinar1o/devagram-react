@@ -1,18 +1,19 @@
-export default function Botao({
-    tipo = "button",
+export default function Botao({ 
+    type = "button", 
     texto, 
-    cor = "primaria",
-    desabilitado= "false",
-    manipularClique
-}) {
+    cor = "primaria", 
+    desabilitado = false, 
+    manipularClique 
+  }) {
+
     return (
         <button 
-        type={tipo} 
+        type={type}
         className={`btn ${cor}`}
         disabled={desabilitado}
         onClick={manipularClique}
-        >
-            
+        > 
+        {texto}
         </button>
     )
 }

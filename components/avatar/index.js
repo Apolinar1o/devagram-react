@@ -1,11 +1,10 @@
-import avatarImg from '../../public/imagens/avatar.svg';
+import avatarImg from '../../public/images/user.svg';
 
-export default function Avatar({ src }) {
+export  function Avatar({ src }) {
     const getAvatar = () => {
         if (src && src !== 'undefined') {
             return src;
         }
-
         return avatarImg.src;
     }
 

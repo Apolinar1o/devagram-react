@@ -1,11 +1,21 @@
 @import "variables.scss";
 @import "../public/fonts/fonts.scss";
+@import "../components/botão/botao.scss";
+@import "../styles/paginaPublica.scss";
+@import "../components/inputPublico/inputPublico.scss";
 * {
   font-family: $fontRegular;
-  
+
+}
+html, body, #__next {
+  height: 100%;
+  margin: 0 0 0 10;
 }
 body {
   text-align: center;
+}
+.div {
+  margin: auto;
 }
 .oculto {
   display: none;
@@ -16,7 +26,48 @@ body {
 }
 .userImage {
   width: 100px;
+
 }
 .button {
   background-color: black;
+} 
+
+input {
+  &::placeholder {
+    // chrome, opera, safara e firefox
+    color: $cinza03;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color: $cinza02;
+  }
+  &::-ms-input-placeholder {
+    color: $cinza02;
+  }
+  
+  .desktop {
+    @media screen and (min-width: $desktopBreakPoint) {
+      .desktop {
+        background-color: black;
+      }
+    }
+    @media screen and (max-width: calc(#{$desktopBreakPoint} - 1px)) {
+      background-color: black;
+    }
+  }
+  
+  .mobile {
+    @media screen and (min-width: $desktopBreakPoint) {
+      display: none;
+      p {
+        font-size: 10em;
+      }
+    }
+    @media screen and (max-width: calc(#{$desktopBreakPoint} - 1px)) {
+      display: block;
+      p {
+        font-size: 10em;
+      }
+    }
+  }
 }
