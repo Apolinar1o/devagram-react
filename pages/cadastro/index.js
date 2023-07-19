@@ -8,6 +8,7 @@ import imagemUsuarioCinza from "../../public/images/usuarioInativo.svg"
 import Link from "next/link";
 import { useState } from "react";
 import UploadImage  from "../../components/uploadImagem";
+import {validarSenha, validarEmail, validarNome, confiSenha} from "../../utils/validadores"
 
 export default function cadastro() {
     const [imagem, setImagem] = useState("")
@@ -15,7 +16,13 @@ export default function cadastro() {
     const [senha, setSenha] = useState("")
     const [email, setEmail] = useState("")
     const [confSenha, setConfSenha] = useState("")
-
+   
+    const VerificarForm = () => {
+      return (
+          validarEmail(email) && validarSenha(senha) && validarNome(nome) && confiSenha(senha, confSenha)
+      )
+  }   
+  console.log(VerificarForm())
     return (
         <section className="paginaCadastro paginaPublica">
             <div className="LogoConteiner desktop´"> 
@@ -29,6 +36,7 @@ export default function cadastro() {
                    imagemPreviewClassName = "avatar avatarPreview"
                    setImagem={setImagem}
                    imagemPreview={imagem?.preview || imagemUsuarioCinza.src} 
+                  
                 
                />
 
@@ -39,6 +47,8 @@ export default function cadastro() {
                    tipo="text"
                    valor={nome}
                    aoAlterarValor={(e) => setNome(e.target.value)}
+                   MensagemValidação ="No minimo 2 caracteres"
+                   exibirMesagemValida = {nome && !validarNome(nome)}
                    
                   />
 
@@ -48,6 +58,8 @@ export default function cadastro() {
                    tipo="email"
                    valor={email}
                    aoAlterarValor={(e) => setEmail(e.target.value)}
+                   MensagemValidação ="e-mail inválido"
+                   exibirMesagemValida = {email && !validarEmail(email)}
                    
                   />
                 <InputPublico 
@@ -56,17 +68,21 @@ export default function cadastro() {
                    tipo="password"
                    valor={senha}
                    aoAlterarValor={(e) => setSenha(e.target.value)}
+                   MensagemValidação ="No minimo 3 caracteres"
+                   exibirMesagemValida = {senha && !validarSenha(senha)}
                   />               
-
+      
                 <InputPublico 
                    imagem={imagemSenha}
                    texto="Confirmar senha"
                    tipo="password"
                    valor={confSenha}
                    aoAlterarValor={(e) => setConfSenha(e.target.value)}
+                   MensagemValidação ="senhas precisam ser iguais"
+                   exibirMesagemValida = {confSenha && !confiSenha(senha, confSenha)}
                   />               
 
-                <Botao texto="login" type="submit" desabilitado="false"/>
+                <Botao texto="login" type="submit" desabilitado={!VerificarForm()} />
                 </form> 
 
                 <div className="RodapePaginaPublica"> 

@@ -32,7 +32,9 @@ body {
 .button {
   background-color: black;
 } 
-
+.mensagemValidacao {
+  color: red;
+}
 input {
   &::placeholder {
     // chrome, opera, safara e firefox
