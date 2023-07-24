@@ -4,11 +4,15 @@ import Botao from "../../components/botão/index";
 import imagemEnvelopoe from "../../public/images/envelope.svg"
 import imagemUsuario from "../../public/images/user.svg"
 import imagemSenha from "../../public/images/senha.svg"
+import UsuarioService from "../../services/ApiUsuarioService";
 import imagemUsuarioCinza from "../../public/images/usuarioInativo.svg"
 import Link from "next/link";
 import { useState } from "react";
 import UploadImage  from "../../components/uploadImagem";
 import {validarSenha, validarEmail, validarNome, confiSenha} from "../../utils/validadores"
+import { useRouter } from "next/router";
+
+const usuarioService = new UsuarioService()
 
 export default function cadastro() {
     const [imagem, setImagem] = useState("")
@@ -16,13 +20,50 @@ export default function cadastro() {
     const [senha, setSenha] = useState("")
     const [email, setEmail] = useState("")
     const [confSenha, setConfSenha] = useState("")
-   
+    const [estaSubmentendo, setEestaSubmentendo] = useState("")
+    const router = useRouter()
+    
     const VerificarForm = () => {
       return (
           validarEmail(email) && validarSenha(senha) && validarNome(nome) && confiSenha(senha, confSenha)
       )
   }   
-  console.log(VerificarForm())
+
+    const aoSubmeter = async (e) => {
+        e.preventDefault()
+        if(!VerificarForm()) {
+          return 
+        } 
+        setEestaSubmentendo(true)
+
+        try {
+          const corpoReqCadastro = new FormData()
+          corpoReqCadastro.append("nome", nome)
+          corpoReqCadastro.append("email", email)
+          corpoReqCadastro.append("senha", senha)
+
+          if(imagem?.arquivo) {
+            corpoReqCadastro.append("file", imagem.arquivo)
+          }
+
+          await usuarioService.cadastro(corpoReqCadastro)
+          await usuarioService.login({
+            login: email, 
+            senha
+          })
+          
+
+          router.push("/")
+       
+        } catch(error) {
+          console.log(error)
+          alert(
+            "erro ao cadastro usuario " + error?.response?.data?.error
+          )
+        }
+        setEestaSubmentendo(false)
+  }
+
     return (
         <section className="paginaCadastro paginaPublica">
             <div className="LogoConteiner desktop´"> 
@@ -30,7 +71,7 @@ export default function cadastro() {
             </div> 
 
             <div className="conteudoPaginaPublica"> 
-                <form> 
+                <form onSubmit={aoSubmeter}> 
                
                <UploadImage
                    imagemPreviewClassName = "avatar avatarPreview"
@@ -82,7 +123,7 @@ export default function cadastro() {
                    exibirMesagemValida = {confSenha && !confiSenha(senha, confSenha)}
                   />               
 
-                <Botao texto="login" type="submit" desabilitado={!VerificarForm()} />
+                <Botao texto="cadastrar" type="submit" desabilitado={!VerificarForm() || estaSubmentendo} />
                 </form> 
 
                 <div className="RodapePaginaPublica"> 

@@ -5,18 +5,49 @@ import imagemSenha from "../../public/images/senha.svg"
 import Image from "next/image"
 import Link from "next/link";
 import { useState } from "react";
+import UsuarioService from "../../services/ApiUsuarioService";
 import {validarEmail, validarSenha} from "../../utils/validadores"
 
-export default function Login() {
+const usuarioService = new UsuarioService()
+
+export default function login({aposAutenticacao}) {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
+    const [estaSubmentedo, setestaSubmentedo] = useState(false)
+    
 
     const VerificarForm = () => {
         return (
             validarEmail(email) && validarSenha(senha)
         )
     }
+    const aoSubmeter = async (e) => {
+        e.preventDefault()
 
+        if(!VerificarForm) {
+            return 
+        }
+
+        setestaSubmentedo(true)
+
+        try {
+            await usuarioService.login({
+                login: email,
+                senha
+            })
+
+            if(aposAutenticacao) {
+                aposAutenticacao()
+            }
+
+        } catch (error) {
+            alert(
+                "Erro ao realizar o login " + error?.response.data?.error
+            )
+        }
+
+        setestaSubmentedo(false)
+    }
     return (
     
        
@@ -29,7 +60,7 @@ export default function Login() {
             </div> 
 
             <div className="conteudoPaginaPublica"> 
-                <form> 
+                <form onSubmit={aoSubmeter}> 
                 <InputPublico 
                    imagem={imagemEnvelopoe}
                    texto="e-mail"
@@ -50,7 +81,7 @@ export default function Login() {
                    exibirMesagemValida = {senha && !validarSenha(senha)}
                   />
 
-                <Botao texto="login" type="submit" desabilitado={!VerificarForm()} />
+                <Botao texto="login" type="submit" desabilitado={!VerificarForm() || estaSubmentedo} />
                 </form>
 
                 <div className="RodapePaginaPublica"> 
