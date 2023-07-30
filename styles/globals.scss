@@ -4,6 +4,8 @@
 @import "../styles/paginaPublica.scss";
 @import "../components/inputPublico/inputPublico.scss";
 @import "../pages/cadastro/cadastro.scss";
+@import "../components/layout/header.scss";
+@import "../components/layout/rodape.scss";
 * {
   font-family: $fontRegular;
 
@@ -50,7 +52,7 @@ input {
 
   }
   
-    .desktop´{
+    .desktop{
       
       display: block;
       @media screen and (max-width: calc($desktopBreakPoint - 1px)) {
@@ -66,3 +68,16 @@ input {
       display: none;
     }
   }
+.barraNavegacao {
+  ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 10px 0px;
+    li {
+      list-style: none;
+      cursor: pointer
+      ;
+    }
+  }
+}

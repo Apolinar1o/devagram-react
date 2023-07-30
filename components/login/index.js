@@ -87,8 +87,10 @@ export default function login({aposAutenticacao}) {
                 <div className="RodapePaginaPublica"> 
                     <p>Não possui uma conta?</p>
                     <Link href="/cadastro">faça seu cadastro</Link>
+        
+                    
                 </div>
-             
+
             </div>
        </section>
        </>

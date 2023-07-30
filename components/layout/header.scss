@@ -1,0 +1,80 @@
+.cabecalhoPrincipal {
+    border-bottom: 1px solid $cinza01;
+
+    .conteudoCabecalhoPrincipal {
+        display: flex;
+        padding: 8px 16px;
+
+        .logoCabecalhoPrincipal {
+            position: relative;
+            width: 160px;
+            height: 30px;
+
+            }
+        .barraPesquisa {
+            position: relative;
+            flex: 1;
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+
+            .conteinerImagemLupa {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                left: 8px;
+            }
+            input {
+                background-color: $corPrimaria04;
+                border: none;
+                outline: none;
+                font-size: 12px;
+                padding: 8px 8px 8px 36px;
+                font-family: $fontLight;
+                border-radius: 5px;
+                color: $corPrimaria;
+                
+                &:focus {
+                    border: 1px solid $corPrimaria;
+                    
+                }
+            }
+        }
+    }
+
+    .resultadoPesquisaConteiner {
+        
+    }
+
+    @media screen and (min-width: $desktopBreakPoint) {
+        background-color: white;
+        border: none;
+
+        .conteudoCabecalhoPrincipal {
+            max-width: 60%;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+        .logoCabecalhoPrincipal {
+            height: 30px;
+        }
+
+            .barraPesquisa {
+                flex: 0.45;
+                margin: 0px 10px 0px 40px;
+
+                input {
+                    width: 100%;
+                }
+            }
+        .barraNavegacao {
+            ul {
+                li {
+                    margin: 0px 0px 0px 20px;
+                }
+            }
+        }
+        }
+    }
+
+}
