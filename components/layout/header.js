@@ -10,33 +10,33 @@ export default function Header() {
     const [termopesquisado, setTermoPesquisado] = useState([])
     
     const aoPesquisar = (e) => {
+   
         setTermoPesquisado(e.target.value)
         setResultadoPesquisa([])
 
         if(termopesquisado.length < 3) {
             return
         }
-        console.log("1111111111111111111")
         setResultadoPesquisa([
             {
-                avatar: "",
-                nome: "douglas",
-                email: "douglas@devagram.com",
-                _id:"324232 "
+                avatar: '',
+                nome: 'Douglas',
+                email: 'douglas@devagram.com',
+                _id: '3242432'
             },
             {
-                avatar: "",
-                nome: "daniel",
-                email: "daniel@devagram.com",
-                _id:"5421 "
+                avatar: '',
+                nome: 'Daniel',
+                email: 'daniel@devagram.com',
+                _id: '8908790879'
             },
             {
-                avatar: "",
-                nome: "neto",
-                email: "neto@devagram.com",
-                _id:"12345 "
+                avatar: '',
+                nome: 'Rafael',
+                email: 'rafael@devagram.com',
+                _id: '6567876'
             }
-    ])
+        ])
     }
    
     const aoClicarResultadoPesquisa = (id) => {
