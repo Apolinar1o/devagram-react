@@ -1,0 +1,137 @@
+.feedConteiner {
+    padding-bottom: 60px;
+    background-color: white;
+
+    .postagem {
+        margin-top: 16px;
+        text-align: left;
+
+        .avatar {
+            height: 32px;
+            width: 32px;
+            margin-right: 8px;
+        }
+        .cabecalhoPostagem {
+
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            margin-bottom: 6px;
+       
+           
+            strong {
+                font-size: 12px;
+                color: $cinza04;
+            }
+            
+        }
+       .fotoDePostagem  {
+        img{
+            width: 100%;
+            height: auto;
+            max-height: 360px;
+            object-fit: cover;
+        }
+       }
+       .rodapeDaPostagem {
+            padding: 5px 16px;
+
+            strong.nomeUsuario {
+                font-size: 12px;
+                float: left;
+                margin-right: 4px;                
+            }
+            p.descricao {
+                font-size: 12px;
+                margin: 0 0 2px;
+
+                .exibirDescricaoCompleta {
+                    font-size: 12px;
+                    color: aqua;
+                    margin-left: 5px;
+                    cursor: pointer;
+                }
+            }
+        .acoesDoRodapeDaPostagem {
+           display: flex;
+           align-items: center;
+           margin-bottom: 8px;
+           > span {
+                margin-right: 1px !important;
+           }
+           .quantidadeCurtidas {
+                font-family: $fontLight;
+                font-size: 10px;
+
+                strong {
+                    font-size: 10px;
+                }
+           }
+        }
+        .descricaoDaPostagem {
+            .nomeUsuario {
+                font-size: 13px;
+            }
+            .descricao {
+                margin-left: px;
+            }
+              
+        }
+
+        .comentariosDaPublicacao {
+            .comentario {
+                .descricao{
+                    margin-left: 40px;
+                }
+        }
+       }
+    }
+    .containerFazerComentario {
+        display: flex;
+        padding: 0 12px;
+        align-items: center;
+        margin-bottom: 16px;
+
+        textarea {
+            resize: none;
+            flex: 1;
+            max-width: 100%;
+            border: none;
+            outline: none;
+            font-size: 12px;
+            color: $cinza02;
+        }
+    }
+    @media screen and (min-width: $desktopBreakPoint) {
+        padding-top: 8px;
+
+        .postagem {
+            .avatar {
+                width: 42px;
+                height: 42px;
+            }
+            .rodapeDaPostagem {
+                .acoesDoRodapeDaPostagem {
+                    > span {
+                        cursor: pointer;
+                }
+            }
+
+            .containerFazerComentario {
+
+                margin-top: 12px;
+                .btnPublicacao {
+                    background-color: transparent;
+                    color: $corPrimaria;
+                    border: none;
+                    outline: none;
+                    font-size: 12px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+}
+}
+}

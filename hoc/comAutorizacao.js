@@ -13,11 +13,12 @@ const usuarioService = new UsuarioService()
                 router.replace("/")
                 return null
             }
+            const usuarioLogado = usuarioService.obterInformacaoUsuario()
             return (
                 <>
-                <Header/>
-                <Componente {...props}/>
-                <Rodape/>
+                <Header usuarioLogado={usuarioLogado} />
+                <Componente usuarioLogado={usuarioLogado}  {...props}/>
+                <Rodape usuarioLogado={usuarioLogado} />
                 </>
             )
 

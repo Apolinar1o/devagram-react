@@ -6,6 +6,7 @@
 @import "../pages/cadastro/cadastro.scss";
 @import "../components/layout/header.scss";
 @import "../components/layout/rodape.scss";
+@import "../components/feed/feed.scss";
 * {
   font-family: $fontRegular;
 
@@ -83,4 +84,17 @@ input {
 }
 strong {
   font-family: $fontBold;
+}
+
+body {
+  @media screen and (min-width: $desktopBreakPoint) {
+      background-color: $cinza05;
+  }
+  .largura30pctDesktop {
+    @media screen and (min-width: $desktopBreakPoint) {
+      width: 30%;
+      margin: auto;
+    }
+  }
+  background-image: url(../public/images/ImagemDeFundoDesktop.svg);
 }
