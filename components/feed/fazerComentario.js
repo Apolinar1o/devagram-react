@@ -1,16 +1,44 @@
+import { useState } from "react";
 import Avatar from "../avatar";
 
-export function FazerComentario({usuarioLogado}) {
+export function FazerComentario({usuarioLogado, comentar}) {
+
+    const [linhas, setLinhas] = useState(1)
+    const [comentario, setComentario] = useState("")
+
+    const aoDigitarComentário = (e) => {
+        const valorInput = e.target.value
+        setComentario(valorInput)
+        setLinhas(valorInput.length > 0 ? 2 : 1 )
+    }
+
+    const aoPressionarTecla = (e) => {
+        if(e.key === "Enter" )  {
+            manipularComentario()
+        }
+    }
+
+    const manipularComentario =  () => {
+        if(comentario.trim().length === 0 || !comentar) {
+            return
+
+        }
+         comentar(comentario)
+     
+    }
+
+    
+
     return (
         <div className="containerFazerComentario">
 
             <Avatar src={usuarioLogado.avatar} />
-            <textarea rows={1} placeholder="adiciona um comentario...">
+            <textarea rows={linhas} onKeyDown={aoPressionarTecla} value={comentario} onChange={aoDigitarComentário} placeholder="adiciona um comentario...">
             </textarea>
 
-            <burron type="button" className="btnPublicacao desktop">
+            <button type="button" onClick={manipularComentario} className="btnPublicacao desktop">
                 Publicar
-            </burron>
+            </button>
         </div>
     )
 }

@@ -62,9 +62,12 @@
            .quantidadeCurtidas {
                 font-family: $fontLight;
                 font-size: 10px;
+                color: $cinza04;
+
 
                 strong {
                     font-size: 10px;
+                    color: $cinza04;
                 }
            }
         }
@@ -95,7 +98,6 @@
         textarea {
             resize: none;
             flex: 1;
-            max-width: 100%;
             border: none;
             outline: none;
             font-size: 12px;
@@ -117,18 +119,19 @@
                 }
             }
 
-            .containerFazerComentario {
+         
+        }
+    }
+    .containerFazerComentario {
 
-                margin-top: 12px;
-                .btnPublicacao {
-                    background-color: transparent;
-                    color: $corPrimaria;
-                    border: none;
-                    outline: none;
-                    font-size: 12px;
-                    cursor: pointer;
-                }
-            }
+        margin-top: 12px;
+        .btnPublicacao {
+            background-color: transparent;
+            color: $corPrimaria;
+            border: none;
+            outline: none;
+            font-size: 12px;
+            cursor: pointer;
         }
     }
 

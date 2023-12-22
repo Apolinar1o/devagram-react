@@ -1,0 +1,16 @@
+
+
+.cabecalhoAcoes {
+    display: flex;
+    border-bottom: 2px solid $cinza01;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+
+    h3 {
+        font-family: $fontBold;
+        font-size: 16px;
+        text-align: center;
+        flex: 1;
+    }
+}

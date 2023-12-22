@@ -1,14 +1,24 @@
-import { headers } from "next/dist/client/components/headers";
-import Image from "next/image";
-import Header from "../../../components/layout/header";
-import comAutorizacao from "../../../hoc/comAutorizacao";
 
-function Perfil(avatar) {
+import Feed from "../../../components/feed/index";
+import comAutorizacao from "../../../hoc/comAutorizacao";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import CabecalhoPerfil from "../../../components/cabecalhoPerfil";
+
+function Perfil({usuarioLogado}) {
+    const [usuario, setusuario] = useState({})
+    const router = useRouter()
+
+    useEffect(() => {
+        setusuario({
+            nome: "Antonio neto"
+        })
+    }, [router.query.id])
    
     return (
-        <div>
-            <h1>Perfil</h1>
-            <Image src={avatar}/>
+        <div className="paginaPerfil">
+            <CabecalhoPerfil usuarioLogado={usuarioLogado} usuario={usuario}/>
+            <Feed usuarioLogado={usuarioLogado} />
         </div>
         )
 }

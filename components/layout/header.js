@@ -3,7 +3,7 @@ import logoHorizontal from "../../public/images/logoDeitado.svg"
 import logoLupa from "../../public/images/lupa.svg"
 import Navegacao from "./navegacao"
 import ResultadoPesquisa  from "./resultadoPesquisa"
-import { useState, useSyncExternalStore } from "react"
+import { useState } from "react"
 import UsuarioService from "../../services/ApiUsuarioService"
 import { useRouter } from "next/router"
 
@@ -13,6 +13,11 @@ export default function Header() {
     const [resultadoPesquisa, setResultadoPesquisa] = useState([])
     const [termopesquisado, setTermoPesquisado] = useState("")
     const router = useRouter()
+
+    let cabecalhoclassName = ""
+    if(window && window.location.pathname !== "/") {
+        cabecalhoclassName = "desktop"
+    }
     
      const  aoPesquisar = async (e) => {
    
@@ -22,7 +27,6 @@ export default function Header() {
         if(termopesquisado.length < 2) {
             return
         }
-        console.log("1111")
         try {
             const {data} = await usuarioService.pesquisar(termopesquisado)
             setResultadoPesquisa(data)
@@ -46,7 +50,7 @@ export default function Header() {
     }
 
     return (
-        <header className="cabecalhoPrincipal">
+        <header className={"cabecalhoPrincipal " + cabecalhoclassName}>
             <div className="conteudoCabecalhoPrincipal"> 
                 <div className="logoCabecalhoPrincipal" >
                     <Image src={logoHorizontal} alt="logoDevagram" onClick={() => redirecionarHome()} layout="fill"/>

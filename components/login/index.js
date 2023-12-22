@@ -49,16 +49,12 @@ export default function login({aposAutenticacao}) {
         setestaSubmentedo(false)
     }
     return (
-    
-       
         <> 
-
       
        <section className="paginaLogin paginaPublica">
             <div className="LogoConteiner"> 
             <Image src="images/logo.svg" alt="imagem logo" className="logo" fill/>
             </div> 
-
             <div className="conteudoPaginaPublica"> 
                 <form onSubmit={aoSubmeter}> 
                 <InputPublico 

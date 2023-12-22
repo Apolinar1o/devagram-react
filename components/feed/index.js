@@ -3,20 +3,18 @@ import Postagem from "./postagem";
 import FeedService from "../../services/FeedService";
 
 const feedService = new FeedService()
-export function Feed({ usuarioLogado }) {
+export default function Feed({ usuarioLogado }) {
   const [listaDePostagem, setListaDePostagem] = useState([]);
 
     const CarregarFeed = async () => {
-      console.log("112312311")
-      const  {data} = await feedService.carregarPostagens(usuarioLogado.id);
-      console.log("123" + postagens.data)
-      const postagensFormatadas = data?.map((postagem) => (
+      const postagens = await feedService.carregarPostagens(usuarioLogado.id);
+      const postagensFormatadas = postagens?.data?.map((postagem) => (
           {
               id: postagem._id,
               usuario: {
-                  id: postagem.userId,
-                  nome: postagem.usuario.nome,
-                  avatar: postagem.usuario.avatar
+                  id: postagem?.idUsuario,
+                  nome: postagem?.usuario?.nome, 
+                  avatar: postagem?.usuario?.avatar
               },
               fotoDoPost: postagem.foto,
               descricao: postagem.descricao,
@@ -27,7 +25,6 @@ export function Feed({ usuarioLogado }) {
               }))
           }
       ));
-
       setListaDePostagem(postagensFormatadas);
     }
     useEffect( () => {
@@ -42,6 +39,7 @@ export function Feed({ usuarioLogado }) {
          {...dadosPostagem} 
          usuarioLogado={usuarioLogado} />
       ))}
+      
     </div>
   );
 }
