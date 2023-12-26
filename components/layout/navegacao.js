@@ -22,7 +22,7 @@ const mapaDeRotas = {
         
     perfil:{
         imagemAtivo: Onuser,
-        rotasAtivacao: ["/perfil/eu", "/perfil/eu/editar"], 
+        rotasAtivacao: ["/perfil/eu", "/perfil/editar"], 
         imgPadrao: user
     }
 }
@@ -36,7 +36,6 @@ export default function Navegacao({className}) {
     }, [router.asPath])
 
     const definirRotaAtiva = () => {
-        console.log("definar rota ativa")
         const chaveDoMapaDeRotas = Object.keys(mapaDeRotas)
         const indiceAtivo = chaveDoMapaDeRotas.findIndex(chave => {
             return mapaDeRotas[chave].rotasAtivacao.includes(

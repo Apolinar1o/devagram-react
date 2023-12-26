@@ -2,7 +2,7 @@ export default function Botao({
     type = "button", 
     texto, 
     cor = "primaria", 
-    desabilitado = "false", 
+    desabilitado = false, 
     manipularClique 
   }) {
 

@@ -7,7 +7,8 @@ export default function HeaderAcoes({
     textoEsquerda = null,
     aoClicarAcaoEsquerda,
     titulo,
-    elementoDireita
+    elementoDireita,
+    AoclicarElementeDireita
 }) {
     return(
         
@@ -34,6 +35,8 @@ export default function HeaderAcoes({
                  
             <button 
             type="button"
+            className="btnAcaoDireita"
+            onClick={AoclicarElementeDireita}
             >
                 {elementoDireita}
             </button>

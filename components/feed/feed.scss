@@ -106,8 +106,15 @@
     }
     @media screen and (min-width: $desktopBreakPoint) {
         padding-top: 8px;
+        margin-top: 0px ;
 
         .postagem {
+
+            .cabecalhoPostagem {
+                cursor: pointer;
+
+            }
+
             .avatar {
                 width: 42px;
                 height: 42px;

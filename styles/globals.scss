@@ -8,7 +8,7 @@
 @import "../components/layout/rodape.scss";
 @import "../components/feed/feed.scss";
 @import "../components/headerAcoes/headerAcoes.scss";
-@import "../pages/perfil/[id]/perfil.scss";
+@import "../pages/perfil/perfil.scss";
 * {
   font-family: $fontRegular;
 
@@ -99,4 +99,18 @@ body {
     }
   }
   background-image: url(../public/images/ImagemDeFundoDesktop.svg);
+}
+
+.linhaDivisoria {
+  margin: 0;
+  border: none;
+  background-color: $cinza01;
+  height: 1px;
+
+  @media screen and (min-width: $desktopBreakPoint) {
+
+      margin: 0 auto;
+      width: 95%
+
+  }
 }
