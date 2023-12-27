@@ -19,7 +19,6 @@ export default function UploadImage({
         aoSetarArefencia(refenciaInput?.current)
     }, [refenciaInput?.current])
     const aoAlterarImagem =  () => {
-        console.log("aoAlterarImagem")
 
         if (!refenciaInput?.current?.files?.length) {
             return

@@ -36,7 +36,7 @@ const descMinimo = 3
             return ""
         }
         if(estaNaetapa() && imagem) {
-            console.log("1234 + " + estaNaetapa())
+        
             return "Avançar"
         }
         return "Compatilhar"

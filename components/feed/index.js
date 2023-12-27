@@ -4,10 +4,9 @@ import FeedService from "../../services/FeedService";
 
 const feedService = new FeedService()
 export default function Feed({ usuarioLogado, idUsuario}) {
-  const [listaDePostagem, setListaDePostagem] = useState([]);
-
+  const [listaDePostagens, setListaDePostagens] = useState([]);
     const CarregarFeed = async () => {
-      setListaDePostagem([])
+      setListaDePostagens([])
       const postagens = await feedService.carregarPostagens(idUsuario?._id);
       const postagensFormatadas = postagens?.data?.map((postagem) => (
           {
@@ -26,20 +25,20 @@ export default function Feed({ usuarioLogado, idUsuario}) {
               }))
           }
       ));
-      setListaDePostagem(postagensFormatadas);
+      setListaDePostagens(postagensFormatadas);
     }
     useEffect( () => {
       CarregarFeed()
   }, [usuarioLogado, idUsuario]);
 
-  if(!listaDePostagem.length) {
+  if(!listaDePostagens.length) {
     return null
   }
 
   return (
     <div className="feedConteiner largura30pctDesktop">
       
-         {listaDePostagem.map((dadosPostagem) => (
+         {listaDePostagens.map((dadosPostagem) => (
           <Postagem 
               key={dadosPostagem.id}
               {...dadosPostagem} 

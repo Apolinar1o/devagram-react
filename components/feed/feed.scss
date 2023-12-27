@@ -35,6 +35,8 @@
        }
        .rodapeDaPostagem {
             padding: 5px 16px;
+            max-height: 100px;
+            overflow-y: auto;
 
             strong.nomeUsuario {
                 font-size: 12px;
@@ -70,6 +72,10 @@
                     color: $cinza04;
                 }
            }
+        }
+        .comentariosDaPublicacao {
+            max-height: 100px;
+            overflow-y: auto;
         }
         .descricaoDaPostagem {
             .nomeUsuario {

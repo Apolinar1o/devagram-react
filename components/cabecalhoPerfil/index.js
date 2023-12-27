@@ -58,7 +58,6 @@ export default function CabecalhoPerfil({
                     ? (qtdSeguidores - 1)
                     : (qtdSeguidores + 1)
             )
-            console.log(qtdSeguidores + " & " + UsuarioService.seguidores )
         } catch (e) {
             console.log("erro ao seguir/deixar de seguir " + e)
         }
