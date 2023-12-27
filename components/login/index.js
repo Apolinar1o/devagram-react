@@ -10,7 +10,7 @@ import {validarEmail, validarSenha} from "../../utils/validadores"
 
 const usuarioService = new UsuarioService()
 
-export default function login({aposAutenticacao}) {
+export default function Login({aposAutenticacao}) {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
     const [estaSubmentedo, setestaSubmentedo] = useState(false)
@@ -24,7 +24,7 @@ export default function login({aposAutenticacao}) {
     const aoSubmeter = async (e) => {
         e.preventDefault()
 
-        if(!VerificarForm) {
+        if(!VerificarForm()) {
             return 
         }
 

@@ -14,13 +14,13 @@ import { useRouter } from "next/router";
 
 const usuarioService = new UsuarioService()
 
-export default function cadastro() {
-    const [imagem, setImagem] = useState("")
+export default function Cadastro() {
+    const [imagem, setImagem] = useState(null)
     const [nome, setNome] = useState("")
     const [senha, setSenha] = useState("")
     const [email, setEmail] = useState("")
     const [confSenha, setConfSenha] = useState("")
-    const [estaSubmentendo, setEestaSubmentendo] = useState("")
+    const [estaSubmentendo, setEestaSubmentendo] = useState(false)
     const router = useRouter()
     
     const VerificarForm = () => {
