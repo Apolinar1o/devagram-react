@@ -1,0 +1,120 @@
+
+.paginaPublicacao {
+    background-color: $branco;
+
+    .cabecalhoAcoes {
+        &.segundaEtapa {
+            > span {
+                cursor: pointer;
+            }
+            h3 {
+                padding-left: 12%;
+            }
+        }
+    }
+
+    .conteudoPaginaPublicacao {
+        .primeiraEtapa {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .uploadImagemConteiner {
+                text-align: center;
+
+                .imagemPreviewContainer {
+
+                    margin: 30px auto;
+                    img {
+                        object-fit: cover;
+                    }
+                    .previewImagemPublicacao {
+                        height: 150px;
+                        width: 150px;
+                    }
+                    .previewImagemSelecionado {
+                        height: 250px;
+                        width: 250px;
+                    
+                    }   
+                       
+            
+                }
+            }
+            .btn {
+                background-color: $corPrimaria02;
+                color: $branco;
+                width: 70%;
+                margin: auto;
+                padding: 12px;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+            
+        }
+        .segundaEtapa {
+
+            display: flex;
+            padding: 16px;
+            .uploadImagemConteiner {
+                .imagemPreviewContainer {
+                    width: 80px;
+                    height: 80px;
+
+                    img {
+                        height: 100%;
+                        width: 100% ;
+                        object-fit: cover;
+                    }
+                }
+            }
+            textarea {
+                border: none;
+                outline: none;
+                resize: none;
+                font-size: 12px;
+                font-family: $fontLight;
+                margin-left: 16px;
+                flex: 1;
+                color: $cinza02;
+            }
+        }
+    }
+   
+}
+@media screen and (min-width: $desktopBreakPoint) {
+
+    .paginaPublicacao {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .conteudoPaginaPublicacao {
+            .primeiraEtapa {
+                cursor: pointer;
+
+                .uploadImagemConteiner {
+                    .imagemPreviewContainer {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                textoDragAndDrop {
+                    text-align: center;
+                    color: $cinza04;
+                    margin-bottom: 30px;
+                }
+            }
+            .segundaEtapa {
+                .uploadImagemConteiner {
+                    .imagemPreviewContainer {
+                        img {
+                            width: 90px;
+                            height: 90px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

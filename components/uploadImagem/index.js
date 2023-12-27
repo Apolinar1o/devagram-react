@@ -18,31 +18,47 @@ export default function UploadImage({
 
         aoSetarArefencia(refenciaInput?.current)
     }, [refenciaInput?.current])
-    const aoAlterarImagem = () => {
+    const aoAlterarImagem =  () => {
         console.log("aoAlterarImagem")
 
         if (!refenciaInput?.current?.files?.length) {
             return
         }
         const arquivo = refenciaInput?.current?.files[0]
-        const filereader = new FileReader()
-        filereader.readAsDataURL(arquivo)
-        filereader.onloadend = () => {
-            console.log(setImagem)
-            setImagem({
-                preview:  filereader.result,
-                arquivo
-            })
-        }
-
+        obterUrlDaImagemEAtualizarEstadoo(arquivo)
     }
 
     const abrirSelecaoArquivos = () => {
         refenciaInput?.current?.click()
     }
+    const aoSoltarImagem = (e) => {
+        e.preventDefault()
+        if(e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            const arquivo = e.dataTransfer.files[0]
+            obterUrlDaImagemEAtualizarEstadoo(arquivo)
+
+        }
+    }
+
+    const obterUrlDaImagemEAtualizarEstadoo = (arquivo) => {
+       
+        const filereader = new FileReader()
+        filereader.readAsDataURL(arquivo)
+        filereader.onloadend = () => {
+   
+            setImagem({
+                preview:  filereader.result,
+                arquivo
+            })
+        }
+    }
+  
 
     return (
-        <div className= {` uploadImagemConteiner ${className} `}  onClick={abrirSelecaoArquivos}> 
+        <div className= {` uploadImagemConteiner ${className} `}  
+        onDragOver={e => e.preventDefault()}
+        onDrop={aoSoltarImagem}
+        onClick={abrirSelecaoArquivos}> 
         {imagemPreview && (
             <div className="imagemPreviewContainer">
                 <img

@@ -41,21 +41,16 @@ function EditarPerfil({usuarioLogado}) {
                 alert("nome precisa de pelo menos 2 caracteres")
                 return
             }
-            console.log("1111111111111111")
             const payload = new FormData();
-            console.log("22222222222222")
 
             payload.append("nome", nome)
-            console.log("333333333333333333333")
 
             if(avatar.arquivo) {
                 payload.append("file", avatar.arquivo)
-                console.log("44444444444444444444444444444")
             }
            
             await usuarioService.atualizarPerfil(payload)
             localStorage.setItem("nome", nome)
-            console.log("55555555555555555555555")
 
             if(avatar.arquivo) {
              localStorage.setItem("avatar", avatar.preview)
@@ -102,7 +97,7 @@ function EditarPerfil({usuarioLogado}) {
 <div className="edicaoNome">
     <label>Nome</label>
     <input
-        type="text"
+        type="text" 
         value={nome}
         onChange={e => setNome(e.target.value)}
     >
