@@ -42,7 +42,7 @@ export default function Login({aposAutenticacao}) {
 
         } catch (error) {
             alert(
-                "Erro ao realizar o login " + error?.response.data?.error
+                "Erro ao realizar o login " 
             )
         }
 
