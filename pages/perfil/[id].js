@@ -15,6 +15,8 @@ function Perfil() {
     const usuarioLogado = localStorage.getItem("id")
     
     const obterPerfil = async (idUsuario) => {
+        console.log(idUsuario + " 1111111111")
+        console.log(usuarioLogado + " 22222222222222")
         try {
         const {data} = await usuarioService.obterPerfil(
             estaNoPerfilPessoal()
@@ -36,12 +38,13 @@ function Perfil() {
         const obterDadosPerfil = async () => {
             if(!router.query.id) {
                 return
-            }  const dadosPerfil = await obterPerfil(    
+            }  
+            const dadosPerfil = await obterPerfil(    
                 
                 estaNoPerfilPessoal()
                 ? usuarioLogado
                 : router.query.id
-    )
+            )
                 setusuario(dadosPerfil)
          
         }
